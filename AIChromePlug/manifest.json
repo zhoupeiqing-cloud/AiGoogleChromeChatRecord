@@ -1,0 +1,68 @@
+{
+  "manifest_version": 3,
+  "name": "AI Conversation Recorder",
+  "version": "1.0.0",
+  "description": "自动记录千问、豆包等AI对话内容，本地存储，快速检索",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "src/popup/index.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "options_page": "src/options/index.html",
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "alarms",
+    "scripting",
+    "notifications",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://qianwen.aliyun.com/*",
+    "https://www.qianwen.com/*",
+    "https://qianwen.com/*",
+    "https://www.doubao.com/*",
+    "https://doubao.com/*",
+    "https://chatai.fan/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://qianwen.aliyun.com/*",
+        "https://www.qianwen.com/*",
+        "https://qianwen.com/*",
+        "https://www.doubao.com/*",
+        "https://doubao.com/*"
+      ],
+      "js": [
+        "content/index.js"
+      ],
+      "css": [
+        "content/styles.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background/index.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content/inject/doubao-hook.js"
+      ],
+      "matches": [
+        "https://www.doubao.com/*",
+        "https://doubao.com/*"
+      ]
+    }
+  ]
+}
