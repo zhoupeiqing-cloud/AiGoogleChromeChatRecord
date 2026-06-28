@@ -63,6 +63,16 @@
         "https://www.doubao.com/*",
         "https://doubao.com/*"
       ]
+    },
+    {
+      "resources": [
+        "content/inject/qianwen-hook.js"
+      ],
+      "matches": [
+        "https://qianwen.aliyun.com/*",
+        "https://www.qianwen.com/*",
+        "https://qianwen.com/*"
+      ]
     }
   ]
 }
